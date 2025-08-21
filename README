@@ -10,3 +10,10 @@ Steps to reproduce:
       --config-settings editable-verbose=true
   ```
 - `pytest tests/test_numpy_mem_handler.py`
+
+Solution is to add to numpy_mem_handler.pyx
+```python
+cimport numpy as cnp
+cnp.import_array()
+````
+See https://github.com/numpy/numpy/issues/29600.
